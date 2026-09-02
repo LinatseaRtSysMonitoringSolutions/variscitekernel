@@ -198,6 +198,8 @@ else
 
 
 EXTRA_CFLAGS += -DLINUX -DDRIVER
+EXTRA_CFLAGS += -Wno-enum-int-mismatch
+
 
 ifeq ($(FLAREON),1)
 EXTRA_CFLAGS += -DFLAREON
