@@ -30,12 +30,23 @@
 	status = "disabled";
 };
 
-&usbotg1 {
-	dr_mode = "otg";
-	status = "okay";
+&wdog1 {
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ fsl,ext-reset-output;
 };
 
 &iomuxc {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_hog_gpioset>;
+
+	pinctrl_hog_gpioset: hoggpiosetgrp {
+		fsl,pins = <
+			MX6UL_PAD_JTAG_MOD__GPIO1_IO10		0x1b0b0
+			MX6UL_PAD_GPIO1_IO08__GPIO1_IO08	0x1b0b0
+		>;
+	};
+
 	pinctrl_i2c1: i2c1grp {
 		fsl,pins = <
 			MX6UL_PAD_UART4_TX_DATA__I2C1_SCL	0x4001b8b0
